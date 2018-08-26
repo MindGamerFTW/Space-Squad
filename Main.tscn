@@ -3,9 +3,9 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MoveBetweenRooms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://in_proximity.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=4]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -18,10 +18,10 @@ ChooseWorld = "res://room2.tscn"
 
 [node name="Wall" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 320, 160 )
+position = Vector2( 352, 96 )
 
-[node name="in_proximity" parent="Wall" index="2" instance=ExtResource( 4 )]
+[node name="Door" parent="." index="3" instance=ExtResource( 4 )]
 
-scale = Vector2( 0.875, 0.875 )
+position = Vector2( 256, 256 )
 
 
