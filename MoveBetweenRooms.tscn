@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="MoveBetweenRooms" type="Area2D"]
+[node name="MoveBetweenRooms" type="Area2D" index="0"]
 
 position = Vector2( 352, 64 )
 input_pickable = true
@@ -22,7 +22,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-ChooseWorld = null
+ChooseWorld = "Null"
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
