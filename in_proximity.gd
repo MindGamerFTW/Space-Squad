@@ -7,7 +7,7 @@ func _ready():
 	add_child(label)
 	
 	connect("body_entered", self , "_on_in_proximity_area_entered")
- connect("body_exited", self, "_on_in_proximity_area_exited")
+	connect("body_exited", self, "_on_in_proximity_area_exited")
 
 func _on_in_proximity_area_entered(body):
 	if body.name == "Player":
