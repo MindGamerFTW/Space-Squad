@@ -4,6 +4,8 @@ var entered = false
 var label
 
 signal activate_door()
+signal display_sign()
+signal exit_sign()
 
 func _ready():
 	label = Label.new()
@@ -21,6 +23,11 @@ func exited(body):
 			
 func _input(event):
 	if entered:
-		if event is InputEventKey and event.scancode == KEY_E:
+		if event is InputEventKey :
+			if event.scancode == KEY_E:
 				if get_parent().name == "Door":
 					emit_signal("activate_door")
+				elif get_parent().name == "Sign":
+					emit_signal("display_sign")
+			if event.scancode == KEY_ESCAPE:
+				emit_signal("exit_sign")

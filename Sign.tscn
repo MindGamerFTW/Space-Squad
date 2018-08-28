@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Door.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/door.png" type="Texture" id=2]
+[ext_resource path="res://Sign.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://InProximity.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 32 )
+extents = Vector2( 32, 32 )
 
-[node name="Door" type="StaticBody2D"]
+[node name="Sign" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -19,18 +19,30 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-choose_scene = null
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="InProximity" parent="." index="2" instance=ExtResource( 3 )]
 
-[connection signal="activate_door" from="InProximity" to="." method="activated_door"]
+scale = Vector2( 1.5, 1.5 )
+
+[connection signal="display_sign" from="InProximity" to="." method="display_sign"]
+
+[connection signal="exit_sign" from="InProximity" to="." method="exit_sign"]
 
 
