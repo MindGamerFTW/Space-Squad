@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=3]
+
+[node name="World" type="Node" index="0"]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 320, 256 )
+
+[node name="Wall" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 224, 416 )
+
+[node name="Door" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 640, 352 )
+_sections_unfolded = [ "Pickable" ]
+choose_scene = "res://World2.tscn"
+
+
