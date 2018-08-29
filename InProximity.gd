@@ -15,6 +15,7 @@ func entered(body):
 	if body.name == "Player":
 		entered = true
 		label.text = "Press E to Interact"
+		label.rect_position = Vector2(-48,-32)
 
 func exited(body):
 	if body.name == "Player":
