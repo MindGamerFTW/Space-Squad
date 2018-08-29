@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Sign.gd" type="Script" id=1]
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://InProximity.tscn" type="PackedScene" id=3]
 
@@ -9,40 +9,28 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Sign" type="StaticBody2D" index="0"]
+[node name="Enemy" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Visibility" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-modulate = Color( 0, 0.0625, 1, 1 )
+modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="InProximity" parent="." index="2" instance=ExtResource( 3 )]
 
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 3, 3 )
 
-[connection signal="display_sign" from="InProximity" to="." method="display_sign"]
-
-[connection signal="exit_sign" from="InProximity" to="." method="exit_sign"]
+[connection signal="aggro" from="InProximity" to="." method="aggro"]
 
 

@@ -6,16 +6,19 @@ var label
 signal activate_door()
 signal display_sign()
 signal exit_sign()
+signal aggro()
 
 func _ready():
 	label = Label.new()
 	add_child(label)
 	
 func entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and get_parent().name != "Enemy":
 		entered = true
 		label.text = "Press E to Interact"
 		label.rect_position = Vector2(-48,-32)
+	elif body.name == "Player":
+		emit_signal("aggro")
 
 func exited(body):
 	if body.name == "Player":
