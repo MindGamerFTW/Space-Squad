@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sign.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=5]
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -16,18 +16,18 @@ position = Vector2( 320, 256 )
 
 position = Vector2( 640, 448 )
 
-[node name="Enemy" parent="Wall" index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 0, -352 )
-
-[node name="Door" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Door" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 640, 352 )
 _sections_unfolded = [ "Pickable" ]
 choose_scene = "res://World2.tscn"
 
-[node name="Sign" parent="." index="3" instance=ExtResource( 5 )]
+[node name="Sign" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 640, 224 )
+
+[node name="Enemy" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 640, 64 )
 
 

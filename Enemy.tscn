@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -31,6 +31,6 @@ shape = SubResource( 1 )
 
 scale = Vector2( 3, 3 )
 
-[connection signal="aggro" from="InProximity" to="." method="aggro"]
+[connection signal="aggro" from="InProximity" to="." method="follow_player"]
 
 

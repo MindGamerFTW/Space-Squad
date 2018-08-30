@@ -1,6 +1,7 @@
 extends Area2D
 
-var entered = false
+onready var inside = false
+onready var entered = false
 var label
 
 signal activate_door()
@@ -14,19 +15,20 @@ func _ready():
 	
 func entered(body):
 	if body.name == "Player" and get_parent().name != "Enemy":
-		entered = true
+		inside = true
 		label.text = "Press E to Interact"
 		label.rect_position = Vector2(-48,-32)
-	elif body.name == "Player":
-		emit_signal("aggro")
+	elif get_parent().name == "Enemy" and body.name == "Player":
+		inside = true
+		entered = true
+		emit_signal("aggro", body)
 
 func exited(body):
-	if body.name == "Player":
-		entered = false
-		label.text = ""
+	inside = false
+	label.text = ""
 			
 func _input(event):
-	if entered:
+	if inside:
 		if event is InputEventKey :
 			if event.scancode == KEY_E:
 				if get_parent().name == "Door":

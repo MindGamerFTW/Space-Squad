@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="InProximity" type="Area2D"]
+[node name="InProximity" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -22,11 +22,10 @@ script = ExtResource( 1 )
 
 scale = Vector2( 4.19231, 4.19231 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="body_entered" from="." to="." method="entered"]
 
 [connection signal="body_exited" from="." to="." method="exited"]
-
-[connection signal="input_event" from="." to="." method="pressed_e"]
 
 
