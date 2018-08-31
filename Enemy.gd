@@ -3,7 +3,7 @@ extends KinematicBody2D
 var attack = 1
 var HP = 50
 onready var vel = Vector2()
-onready var P = get_parent().get_node("Player")
+onready var P = get_parent().get_parent().get_node("Player")
 
 func _process(delta):
 	if $InProximity.inside:
@@ -26,5 +26,9 @@ func in_aggro_range(body):
 func attack():
 	if $InProximity.inside:
 		P.HP.value -= attack
-
+		
+func died():
+	if HP == 0:
+		queue_free()
+		
 	
