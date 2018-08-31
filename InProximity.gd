@@ -28,7 +28,7 @@ func exited(body):
 	label.text = ""
 			
 func _input(event):
-	if inside:
+	if entered:
 		if event is InputEventKey :
 			if event.scancode == KEY_E:
 				if get_parent().name == "Door":

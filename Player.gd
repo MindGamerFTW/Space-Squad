@@ -2,12 +2,11 @@ extends KinematicBody2D
 
 var motion = Vector2()
 var attack = 1
-onready var enemies = get_parent().get_node("Enemies")
-onready var HP = get_parent().get_node("Interface").get_node("Top_Left").get_node("HP_bar")
+onready var HP = $Interface.get_node("Top_Left").get_node("HP_bar")
 
 func _process(delta):
-	for i in range(enemies.get_child_count()):
-		attack(enemies.get_child(i))
+	for i in get_tree().get_nodes_in_group("Enemies"):
+		attack(i)
 	dead()
 
 func _physics_process(delta):
