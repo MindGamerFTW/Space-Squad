@@ -14,11 +14,11 @@ func _ready():
 	add_child(label)
 	
 func entered(body):
-	if body.name == "Player" and get_parent().name != "Enemy":
-		inside = true
+	if body.name == "Player" and !get_parent().is_in_group("Enemies"):
+		entered = true
 		label.text = "Press E to Interact"
 		label.rect_position = Vector2(-48,-32)
-	elif get_parent().name == "Enemy" and body.name == "Player":
+	elif get_parent().is_in_group("Enemies") and body.name == "Player":
 		inside = true
 		entered = true
 		emit_signal("aggro", body)
