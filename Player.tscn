@@ -36,7 +36,9 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 16, 32 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Players",
+]]
 
 position = Vector2( 288, 160 )
 input_pickable = false

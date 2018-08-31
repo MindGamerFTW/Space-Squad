@@ -3,32 +3,36 @@ extends KinematicBody2D
 var attack = 1
 var HP = 50
 onready var vel = Vector2()
-onready var P = get_parent().get_parent().get_node("Player")
+onready var Players = get_tree().get_nodes_in_group("Players")
 
 func _process(delta):
 	if $InProximity.inside:
-		follow_player(P,delta)
-	if in_aggro_range(P) and $InProximity.entered:
-		follow_player(P,delta)
+		follow(delta)
+	if in_aggro_range() and $InProximity.entered:
+		follow(delta)
 	attack()
 	died()
 		
-func follow_player(body,delta):
-		vel = (body.position-self.position).normalized()*50*delta
+func follow(delta):
+	for i in Players:
+		vel = (i.position-self.position).normalized()*50*delta
 		self.position += vel
 	
-func in_aggro_range(body):
-	if body.position.distance_to(self.position) < 500:
-		return true
-	if $InProximity.entered and body.position.distance_to(self.position) > 500:
-		 $InProximity.entered = false
+func in_aggro_range():
+	for i in Players:
+		if i.position.distance_to(self.position) < 500:
+			return true
+		if $InProximity.entered and i.position.distance_to(self.position) > 500:
+			 $InProximity.entered = false
 	
 func attack():
-	if $InProximity.inside:
-		P.HP.value -= attack
+	for i in Players:
+		if $InProximity.inside:
+			i.HP.value -= attack
 		
 func died():
-	if HP == 0:
-		queue_free()
+	for i in Players:
+		if HP == 0:
+			queue_free()
 		
 	
