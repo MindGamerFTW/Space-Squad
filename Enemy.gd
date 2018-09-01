@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var attack = 1
-var HP = 50
+var HP = 100
 onready var vel = Vector2()
 onready var Players = get_tree().get_nodes_in_group("Players")
 
@@ -27,7 +27,7 @@ func in_aggro_range():
 	
 func attack():
 	for i in Players:
-		if $InProximity.inside:
+		if $InProximity.entered:
 			i.HP.value -= attack
 		
 func died():
