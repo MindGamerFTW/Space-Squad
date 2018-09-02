@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player Sprites/Front.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player Sprites/Back.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player Sprites/Left.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player Sprites/Right.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player Sprites/Left.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player Sprites/Right.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player Sprites/Front.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player Sprites/Back.png" type="Texture" id=5]
 [ext_resource path="res://Interface/Interface.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -12,22 +12,22 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "front",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "back",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "left",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "right",
+"name": "back",
 "speed": 5.0
 } ]
 
@@ -36,7 +36,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 16, 32 )
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "Players",
 ]]
 

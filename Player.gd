@@ -11,6 +11,7 @@ func _physics_process(delta):
 
 func attack(body):
 		if body.get_node("InProximity").entered:
+			print(body)
 			body.HP -= attack
 	
 func dead():

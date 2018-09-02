@@ -16,6 +16,7 @@ func _ready():
 func entered(body):
 	if body.is_in_group("Players") and !get_parent().is_in_group("Enemies"):
 		entered = true
+		inside = true
 		label.text = "Press E to Interact"
 		label.rect_position = Vector2(-48,-32)
 	elif get_parent().is_in_group("Enemies") and body.is_in_group("Players"):
@@ -28,7 +29,7 @@ func exited(body):
 	label.text = ""
 			
 func _input(event):
-	if entered:
+	if inside:
 		if event is InputEventKey :
 			if event.scancode == KEY_E:
 				if get_parent().name == "Door":
