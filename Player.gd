@@ -1,6 +1,8 @@
 extends KinematicBody2D
 var motion = Vector2()
-var attack = 50
+var attack = 100
+var target = null
+var possible_targets = []
 onready var HP = $Interface.get_node("Top_Left").get_node("HP_bar")
 
 func _process(delta):
@@ -11,18 +13,26 @@ func _physics_process(delta):
 
 func attack(body):
 		if body.get_node("InProximity").entered:
-			print(body)
 			body.HP -= attack
 	
 func dead():
 	if HP.value == 0:
 		get_tree().change_scene("res://Respawn_Screen.tscn")
 	
-func _input(event):
-	if event is InputEventKey and event.scancode == KEY_E:
-		for i in get_tree().get_nodes_in_group("Enemies"):
-			attack(i)
+func set_target():
+	"""to set a selected target: create on enemy a signal that emits when the enemy is pressed
+	emit the signal with self.name as an argument. connect the signal to a player method called set target.
+	in the method do "target = body" (while body is the argument set_target recieves).
+	then call attack func with target as a argument.
+	*dont forget to duplicate the enemies after connecting the signal and not before, so they all have their signal connected"""
+	possible_targets = get_tree().get_nodes_in_group("Enemies")
+	target = possible_targets[rand_range(0,len(possible_targets))]
+	return target
 	
+func _input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_E:
+			attack(set_target())
 	
 func controls(body):
 	if body.name == "Player":
@@ -50,4 +60,4 @@ func controls(body):
 			motion.y = 0
 			
 		move_and_slide(motion)
-		
+

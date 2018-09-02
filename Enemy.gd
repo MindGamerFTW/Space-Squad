@@ -4,6 +4,7 @@ var attack = 1
 var HP = 100
 onready var vel = Vector2()
 onready var Players = get_tree().get_nodes_in_group("Players")
+signal targeted()
 
 func _process(delta):
 	if $InProximity.inside:
@@ -33,6 +34,5 @@ func attack():
 func died():
 	for i in Players:
 		if HP == 0:
-			queue_free()
-		
-	
+			queue_free()	
+

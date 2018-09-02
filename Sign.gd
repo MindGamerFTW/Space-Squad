@@ -29,7 +29,6 @@ func zoom_out(event):
 		
 func display_sign():
 	zoom_in()
-	
 
 func exit_sign():
 	zoom_out(event1)

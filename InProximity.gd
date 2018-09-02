@@ -30,7 +30,7 @@ func exited(body):
 			
 func _input(event):
 	if inside:
-		if event is InputEventKey :
+		if event is InputEventKey:
 			if event.scancode == KEY_E:
 				if get_parent().name == "Door":
 					emit_signal("activate_door")
