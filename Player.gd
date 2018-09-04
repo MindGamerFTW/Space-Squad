@@ -12,10 +12,12 @@ func _physics_process(delta):
 	controls(self)
 
 func attack(body):
+	if body == null:
+		return
 	var wr = weakref(body)
 	if !wr.get_ref():
 		return
-	elif body.get_node("InProximity").entered:
+	elif body.get_node("InProximity").entered and body.is_in_group("Enemies"):
 		body.HP -= attack
 		
 func dead():
