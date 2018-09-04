@@ -12,10 +12,12 @@ func _physics_process(delta):
 	controls(self)
 
 func attack(body):
-	if body.get_node("InProximity").entered:
+	var wr = weakref(body)
+	if !wr.get_ref():
+		return
+	elif body.get_node("InProximity").entered:
 		body.HP -= attack
-
-	
+		
 func dead():
 	if HP.value == 0:
 		get_tree().change_scene("res://Respawn_Screen.tscn")

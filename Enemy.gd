@@ -39,9 +39,8 @@ func died():
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and mouseInBody:
-		print(self.name)
-		emit_signal("targeted", self)
-		$Sprite.modulate = Color(255,255,255,255)
+			emit_signal("targeted", self)
+			$Sprite.modulate = Color(255,255,255,255)
 
 func mouse_entered():
 	mouseInBody = true
