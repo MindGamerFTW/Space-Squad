@@ -41,7 +41,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and mouseInBody:
 		if $InProximity.entered:
 			emit_signal("targeted", self)
-			$Sprite.modulate = Color(255,255,255,255)
+			$Sprite.texture = preload("res://targeted_enemy.png")
 
 func mouse_entered():
 	mouseInBody = true
