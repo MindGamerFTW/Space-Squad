@@ -17,7 +17,7 @@ func attack(body):
 	var wr = weakref(body)
 	if !wr.get_ref():
 		return
-	elif body.get_node("InProximity").entered and body.is_in_group("Enemies"):
+	elif body.get_node("InProximity").entered:
 		body.HP -= attack
 		
 func dead():
