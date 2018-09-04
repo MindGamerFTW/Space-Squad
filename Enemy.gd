@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var attack = 1
 var HP = 100
+var mouseInBody = false
 onready var vel = Vector2()
 onready var Players = get_tree().get_nodes_in_group("Players")
 signal targeted()
@@ -34,5 +35,16 @@ func attack():
 func died():
 	for i in Players:
 		if HP == 0:
-			queue_free()	
+			queue_free()
 
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and mouseInBody:
+		print(self.name)
+		emit_signal("targeted", self)
+		$Sprite.modulate = Color(255,255,255,255)
+
+func mouse_entered():
+	mouseInBody = true
+
+func mouse_exited():
+	mouseInBody = false

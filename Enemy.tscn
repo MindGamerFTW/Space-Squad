@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="Enemy" type="KinematicBody2D" index="0" groups=[
 "Enemies",
 ]]
 
@@ -33,6 +33,10 @@ shape = SubResource( 1 )
 [node name="InProximity" parent="." index="2" instance=ExtResource( 3 )]
 
 scale = Vector2( 3, 3 )
+
+[connection signal="mouse_entered" from="." to="." method="mouse_entered"]
+
+[connection signal="mouse_exited" from="." to="." method="mouse_exited"]
 
 [connection signal="aggro" from="InProximity" to="." method="follow_player"]
 
