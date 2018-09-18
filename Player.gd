@@ -2,7 +2,6 @@ extends KinematicBody2D
 var motion = Vector2()
 var attack = 100
 var target = null
-var possible_targets = []
 onready var HP = $Interface.get_node("Top_Left").get_node("HP_bar")
 
 func _process(delta):
@@ -25,8 +24,8 @@ func dead():
 		get_tree().change_scene("res://Respawn_Screen.tscn")
 	
 func enemy_targeted(body):
-	target = body
-	
+		target = body
+
 func _input(event):
 	if event is InputEventKey and event.scancode == KEY_E and event.is_pressed():
 			attack(target)

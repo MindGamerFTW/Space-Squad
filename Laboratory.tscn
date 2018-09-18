@@ -1,16 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Door.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/door.png" type="Texture" id=2]
+[ext_resource path="res://Laboratory.gd" type="Script" id=1]
+[ext_resource path="res://Assets/lab.png" type="Texture" id=2]
 [ext_resource path="res://InProximity.tscn" type="PackedScene" id=3]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 32 )
+extents = Vector2( 96, 269 )
 
-[node name="Door" type="StaticBody2D" index="0"]
+[node name="Laboratory" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -20,18 +19,26 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-choose_scene = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 0.309505, 0.322392 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( 0, 6.5 )
+scale = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 
 [node name="InProximity" parent="." index="2" instance=ExtResource( 3 )]
 
-[connection signal="activate_door" from="InProximity" to="." method="activated_door"]
+position = Vector2( 0, 112 )
+scale = Vector2( 1, 1.5 )
+
+[connection signal="open_lab_menu" from="InProximity" to="." method="open_lab_menu"]
 
 

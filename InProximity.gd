@@ -8,13 +8,14 @@ signal activate_door()
 signal display_sign()
 signal exit_sign()
 signal aggro()
+signal open_lab_menu()
 
 func _ready():
 	label = Label.new()
 	add_child(label)
 	
 func entered(body):
-	if body.is_in_group("Players") and !get_parent().is_in_group("Enemies"):
+	if !get_parent().is_in_group("Enemies") and body.is_in_group("Players"):
 		entered = true
 		inside = true
 		label.text = "Press E to Interact"
@@ -30,11 +31,13 @@ func exited(body):
 			
 func _input(event):
 	if inside:
-		if event is InputEventKey:
+		if event is InputEventKey and event.is_pressed():
 			if event.scancode == KEY_E:
 				if get_parent().name == "Door":
 					emit_signal("activate_door")
 				elif get_parent().name == "Sign":
 					emit_signal("display_sign")
+				elif get_parent().name == "Laboratory":
+					emit_signal("open_lab_menu")
 			if event.scancode == KEY_ESCAPE:
 				emit_signal("exit_sign")
