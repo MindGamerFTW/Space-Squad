@@ -9,10 +9,9 @@ signal targeted()
 
 func _process(delta):
 	if $InProximity.inside:
-		follow(delta)
+		attack()
 	if in_aggro_range() and $InProximity.entered:
 		follow(delta)
-	attack()
 	died()
 		
 func follow(delta):
