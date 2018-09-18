@@ -24,7 +24,8 @@ func in_aggro_range():
 		if i.position.distance_to(self.position) < 500:
 			return true
 		if $InProximity.entered and i.position.distance_to(self.position) > 500:
-			 $InProximity.entered = false
+			$InProximity.entered = false
+			
 	
 func attack():
 	for i in Players:

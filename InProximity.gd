@@ -16,8 +16,8 @@ func _ready():
 	
 func entered(body):
 	if !get_parent().is_in_group("Enemies") and body.is_in_group("Players"):
-		entered = true
 		inside = true
+		entered = true
 		label.text = "Press E to Interact"
 		label.rect_position = Vector2(-48,-32)
 	elif get_parent().is_in_group("Enemies") and body.is_in_group("Players"):
