@@ -33,9 +33,8 @@ func attack():
 			i.HP.value -= attack
 		
 func died():
-	for i in Players:
-		if HP == 0:
-			queue_free()
+	if HP == 0:
+		queue_free()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and mouseInBody:
